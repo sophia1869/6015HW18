@@ -16,9 +16,9 @@
 int main(int argc, const char * argv[]) {
     Bank bank = Bank(std::stod(argv[1]),std::stod(argv[2]),std::stoi(argv[3]));
     bank.simulation();
-    bank.printRes();
+    bank.printRes("Bank");
     
     SuperMarket supermarket = SuperMarket(std::stod(argv[1]),std::stod(argv[2]),std::stoi(argv[3]));
     supermarket.simulation();
-    supermarket.printRes();
+    supermarket.printRes("Supermarket");
 }
