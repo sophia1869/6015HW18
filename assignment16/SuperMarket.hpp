@@ -9,39 +9,15 @@
 #ifndef SuperMarket_hpp
 #define SuperMarket_hpp
 
+#include "Store.h"
 #include <stdio.h>
 #include <queue>
 
-class SuperMarket{
+class SuperMarket : public Store {
 public:
-    SuperMarket(double arrivingRate, double maxServiceTime, int seed);
-    double arrivingRate;
-    double maxServiceTime;
-    struct customer{
-        double arrivingTime;
-        double serviceTime;
-        double waitingTime;
-    };
-    
-    struct cashier{
-        double completeTime;
-    };
-    
-    struct cashierCompleteTimeCmp{
-        bool operator()(const cashier&lhs, const cashier&rhs){
-            return rhs.completeTime < lhs.completeTime;
-            // c++ priority queue is bigger one is in front; so in normal situation,
-            // pop() gives largest element. so this comparator is reversed.
-        }
-    };
-    
-    std::priority_queue<cashier, std::vector<cashier>, cashierCompleteTimeCmp> workingCashiers;
-    std::vector<double> history;
+    SuperMarket(double arrivingRate, double maxServiceTime, int seed) : Store(arrivingRate, maxServiceTime, seed) {};
+
     void simulation();
-    void printRes();
-    static bool sort_using_smaller_than(double u, double v){
-        return u < v;
-    }
 };
 
 
